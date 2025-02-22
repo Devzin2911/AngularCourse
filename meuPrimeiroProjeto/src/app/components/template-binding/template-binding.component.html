@@ -1,0 +1,70 @@
+<h2>Templates</h2>
+<h3>Text Interpolation</h3>
+
+<p>{{ name }} - {{ age }}</p>
+
+
+<hr />
+
+<h2>Property Binding</h2>
+<!-- <element [property]='value'></elements> -->
+<button disabled="isDisabled">Teste</button>
+
+
+
+<hr />
+
+
+<h2>Attribute Binding</h2>
+<!-- <element [attr.attribute-you-are-targeting]="Value"></element> -->
+ <p [attr.title]="name" [attr.aria.label]="name">Dener Troquatte</p>
+
+
+<hr />
+
+
+<h2>Class and Style Binding</h2>
+<p [class.background-red]="age > 24" [class.background-blue]="age <= 24">{{ name }}</p>
+
+<p [style.text-decoration]="isTextDecoration">{{ age }}</p>
+
+
+<hr />
+
+
+<h2>Event Binding</h2>
+<!--
+    <element>
+        (TargetEventName)='TemplateStatement'
+    </element>
+-->
+
+<p><button (click)="sum()">+</button> {{ age }}</p>
+<p><button (click)="sub()">-</button> {{ age }}</p>
+<input (keydown.shift.t)="onKeyDown($event)">
+
+
+<hr />
+
+<h3>Two-way Binding</h3>
+<input [(ngModel)]="name" />
+
+{{ name }}
+
+<hr />
+
+<h2>Diretivas de Atributos </h2>
+<h3>Class and Style Binding</h3>
+<div [ngClass]="{'background-red': age > 24, 'background-blue': age < 24}">
+    Classes condicionais
+</div>
+
+
+<div [ngStyle]="{
+    color: age <= 24 ? 'green': 'red',
+    'font-size': age === 24 ? '10px' : '20px'
+}">
+    Estilo dinamico
+</div>
+
+<hr />

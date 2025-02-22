@@ -1,0 +1,41 @@
+<h2 #trigger>Deferrable Views</h2>
+
+@defer (on timer(5s); on interaction(trigger); on hover) {
+    <app-new-component />
+} @placeholder {
+    <p>Mostrar antes de carregar algo.</p>
+} @loading {
+    <p>loading</p>
+} @error {
+    <p>Loading failed :(</p>
+}
+
+
+<hr />
+
+
+<h2 #trigger>Deferrable Views - When</h2>
+
+<button (click)="isTrue = true">Add True</button>
+
+@defer(when isTrue) {
+<app-new-component />
+} @placeholder {
+<p>Mostrar antes de carregar algo.</p>
+} @loading {
+<p>loading</p>
+} @error {
+<p>Loading failed :(</p>
+}
+
+<hr/> 
+
+@defer(when loadingData$ | async) {
+<app-new-component />
+} @placeholder {
+<p>Mostrar antes de carregar algo.</p>
+} @loading {
+<p>loading</p>
+} @error {
+<p>Loading failed :(</p>
+}

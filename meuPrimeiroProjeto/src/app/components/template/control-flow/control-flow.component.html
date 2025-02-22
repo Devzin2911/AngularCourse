@@ -1,0 +1,89 @@
+<h2>Control Flow</h2>
+
+<h3>IF</h3>
+
+<!-- Forma Nova -->
+@if(num1 === num2) {
+    <p>O {{num1}} é igual ao {{num2}}</p>   
+ } @else {
+    <p>O {{num1}} não é igual ao {{num2}}</p>
+ }
+<hr />
+
+<h3>FOR</h3>
+
+@if(loadingData | async; as data) {
+    <ul>
+        @for(item of data; track item) {
+            <li>{{ item }}</li>
+        }
+    </ul>
+} @else {
+    <p>Carregando</p>
+}
+
+
+<hr />
+
+<!-- Forma nova -->
+<h3>FOR e seus Valores</h3>
+
+@for(
+    item of itens; track item.name;
+    let i = $index;
+    let c = $count;
+    let f = $first;
+    let l = $last;
+    let e = $even;
+    let o = $odd;
+) {
+    <p> {{item.name}} </p>
+    <p>index - {{ i }}</p>
+    <p>count - {{ c }} </p>
+    <p>first - {{ f }}</p>
+    <p> last - {{ l }}</p>
+    <p>seven - {{ e }}</p>
+    <p>  odd - {{ o }}</p>
+}
+
+
+<input #name>
+<button (click)="addNewName(name.value)">Add Name</button>
+
+<hr />
+
+<h3>For "Empty"</h3>
+
+<!-- Forma atual -->
+
+<ul>
+    @for(item of itens; track item.name) {
+        <li> {{ item.name }} </li>
+    } @empty{
+        <li>Não contém valores</li>
+    }
+</ul>
+
+
+
+
+<hr />
+
+<h3>Switch Case</h3>
+
+
+<!-- Forma atual -->
+@switch(switchCondition) {
+    @case('A') {
+        <p>Sim, sua letra é a: A</p>
+    }
+
+    @case('B') {
+        <p>Sim, sua letra é a: B</p>
+    }
+
+    @default {
+        <p>Os dados não foram encontrados</p>
+    }
+}
+
