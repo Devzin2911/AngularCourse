@@ -1,0 +1,12 @@
+<h2>Services</h2>
+<ul>
+@for(item of getListTask(); track item) {
+    <li>{{ item.id }} + {{ item.title}}</li>
+} @empty {
+    <li>Não existem dados</li>
+}
+
+</ul>
+
+
+

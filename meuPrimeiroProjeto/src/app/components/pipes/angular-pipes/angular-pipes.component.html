@@ -1,0 +1,14 @@
+<h2>Pipes</h2>
+<ul>
+    <li> date: {{ date() | date : 'short' }}</li>
+    <li> upperCase: {{ 'Gabriel Rocha ' | uppercase }}</li>
+    <li>lowercase: {{ 'ANA CAROLINA' | lowercase }}</li>
+    <li>json: {{jason() | json }}</li>
+    <li>async: {{ loadingData$ | async }}</li>
+    <li>async: {{ 254.23 | currency : 'BRL' }}</li>
+    <li>async: {{ 2350.55 | number }}</li>
+    <li>customString: {{ "Gabriel Rocha" | customString: "upper" }}</li>
+</ul>
+
+
+
