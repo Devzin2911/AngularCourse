@@ -13,6 +13,10 @@ import { ContentComponent } from './components/content/content.component';
 import { HostElementsComponent } from './components/host-elements/host-elements.component';
 import { LifeCycleComponent } from './components/life-cycle/life-cycle.component';
 import { ConsumeServiceComponent } from '@components/consume-service/consume-service.component';
+import { HomeComponent } from './pages/home/home.component';
+import { TranslateComponent } from '@components/translate/translate.component';
+import { OptImageComponent } from '@components/opt-image/opt-image.component';
+import { AnimationsComponent } from '@components/animations/animations.component';
 
 
 @Component({
@@ -21,6 +25,7 @@ import { ConsumeServiceComponent } from '@components/consume-service/consume-ser
   imports:
     [
       CommonModule,
+      HomeComponent,
       RouterOutlet,
       AngularPipesComponent,
       TemplateDrivenFormsComponent,
@@ -28,14 +33,17 @@ import { ConsumeServiceComponent } from '@components/consume-service/consume-ser
       ContentComponent,
       HostElementsComponent,
       LifeCycleComponent,
-      ConsumeServiceComponent
+      ConsumeServiceComponent,
+      TranslateComponent,
+      OptImageComponent,
+      AnimationsComponent
     ],
   template: `
-      <!-- <router-outlet><router-outlet /> -->
+      <!-- <h2>Rotas</h2> <router-outlet><router-outlet /> <app-translate />-->
 
       <h1>Curso de Angular</h1>
-      <app-consume-service />
-      
+      <app-animations />
+    
 
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -43,6 +51,6 @@ import { ConsumeServiceComponent } from '@components/consume-service/consume-ser
   
 
 export class AppComponent {
-  
+
   
 }

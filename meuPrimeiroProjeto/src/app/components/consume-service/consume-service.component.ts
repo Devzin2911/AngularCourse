@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@ang
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NewComponent } from '@components/new-component/new-component.component';
 import { ApiService } from 'app/services/api.service';
+import { concatMap } from 'rxjs';
 
 @Component({
   selector: 'app-consume-service',
@@ -21,16 +22,36 @@ export class ConsumeServiceComponent implements OnInit {
 
   //public getTask$ = this.#apiService.httpListTask$();
   public getListTask = this.#apiService.getListTask;
+  public getTaskId = this.#apiService.getTaskId;
+  public getTaskIdError = this.#apiService.getTaskIdError;
+  public getTaskCreateError = this.#apiService.getTaskCreateError;
+  public getTaskUpdateError = this.#apiService.getTaskUpdateError;
+  public getTaskDeleteError = this.#apiService.getTaskDeleteError;
   
   ngOnInit(): void {
     this.#apiService.httpListTask$().subscribe();
-    // this.getTask$.subscribe({
-    //   next: (next) => {
-    //     console.log(next)
-    //     this.getTask.set(next)
-    //   },
-    //   error: (error) => console.log(error),
-    //   complete: () => console.log("Complete!")
-   // });
+    this.#apiService.httpTaskId$('Qo5BioS7BLVATXPzSx1o').subscribe();
   }
+
+  public httpTaskCreate(title: string) {
+    return this.#apiService
+      .httpTaskCreate$(title)
+      .pipe(concatMap(() => this.#apiService.httpListTask$()))
+      .subscribe();
+  }
+
+  public httpTaskUpdate(id: string, title: string) {
+    return this.#apiService
+      .httpTaskUpdate$(id, title)
+      .pipe(concatMap(() => this.#apiService.httpListTask$()))
+      .subscribe();
+  }
+
+   public httpTaskDelete(id: string) {
+    return this.#apiService
+      .httpTaskDelete$(id)
+      .pipe(concatMap(() => this.#apiService.httpListTask$()))
+      .subscribe();
+  }
+
 }
